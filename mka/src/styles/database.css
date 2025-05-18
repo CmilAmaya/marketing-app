@@ -1,0 +1,109 @@
+.manage-database-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem 1rem 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.title-database {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.database-container {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 0rem 1.5rem 2.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.name-role-database-container h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+
+.name-role-database-container h5 {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-primary);
+  font-weight: 400;
+}
+
+.database-actions {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: 2rem;
+  gap: 0.5rem;
+}
+
+.reprocess-database-button {
+  border: 1px solid #8866dd;
+  color: #8866dd;
+  background-color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: var(--font-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.reprocess-database-button:hover {
+  background: #8866dd;
+  color: white;
+}
+
+.download-database-button {
+  background: white;
+  border: 1px solid #3aa76d;
+  color: #3aa76d;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: var(--font-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.download-database-button:hover {
+  background: #2ea063;
+  color: white;
+}
+
+.reprocess-database-button:hover {
+  background: #8866dd;
+  color: white;
+}
+
+.delete-database-button {
+  border: 1px solid #d22c2c;
+  color: #d22c2c;
+  background-color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: var(--font-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.delete-database-button:hover{
+    background-color: #d60d0d;
+    color: white;
+}
+
+.scrollable-content {
+  height: calc(100vh - 4.5rem); 
+  overflow-y: auto;
+  padding-right: 1rem;
+}

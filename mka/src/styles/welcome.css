@@ -1,0 +1,12 @@
+.welcome-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh
+}
+
+.welcome-title{
+    font-family: var(--font-primary);
+    font-size: 3rem;
+    color: var(--color-primary);
+}

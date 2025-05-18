@@ -1,0 +1,90 @@
+.aside-sidebar {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0rem 1rem;
+  border-right: 2px solid var(--color-border);
+  height: 100vh;
+  box-sizing: border-box;
+  margin-left: 0.5rem;
+  
+}
+
+.title-sidebar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.name-sidebar{
+  margin-top: 1.5rem; 
+  margin-left: 0.5rem ;
+  color: var(--color-primary);
+}
+
+.role-sidebar{
+  margin: 0rem 0rem 1rem 0.5rem; 
+  color: var(--color-secondary);
+  text-transform: capitalize;
+}
+
+.links-sidebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  text-decoration: none;
+  font-family: var(--font-primary); 
+}
+
+.links-sidebar-buttons{
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  padding: 1rem 0.5rem;
+  text-decoration: none;
+  font-family: var(--font-primary); 
+}
+
+.links-sidebar-selected{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  text-decoration: none;
+  font-family: var(--font-primary);
+  background-color: #aa95fd7c;
+  border-radius: 15px;
+}
+
+.main-link-content {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.items-sidebar {
+  display: block;
+  color: var(--color-primary);
+  text-decoration: none;
+  text-align: left;
+}
+
+.text-sidebar {
+  font-size: 0.75rem;
+  margin: 0;
+  color: var(--color-primary);
+}
+
+.icon-sidebar {
+  color: var(--color-primary);
+}
+
+.letter-sidebar {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--color-primary);
+}
+

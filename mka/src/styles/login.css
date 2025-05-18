@@ -1,0 +1,86 @@
+.login-container {
+  position: relative; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+.login-form {
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 22rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-form input {
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+}
+
+.login-form input::placeholder {
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+.login-link{
+    font-family: var(--font-primary);
+    color: var(--color-primary);
+    text-decoration: none;
+    text-align: center;
+}
+
+.login-form button {
+  background-color: var(--color-primary); 
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: var(--font-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.login-form button:hover {
+  background-color: rgba(193, 154, 255, 0.233);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.decor-top-right,
+.decor-bottom-left {
+  position: absolute;
+  z-index: 0;
+}
+
+.decor-top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.decor-bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.decor-top-left{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.decor-bottom-right {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
