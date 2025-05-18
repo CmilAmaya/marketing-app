@@ -6,7 +6,7 @@ import '../styles/sidebar.css'
 const itemsByRole = {
   admin: [
     { label: 'Upload File', to: '/upload', text: 'CSV file', letter:'U', icon:Upload},
-    { label: 'Reports / Dashboard', to: '/reports', text: 'Acess generated report', letter:'R', icon:BarChart2},
+    { label: 'Reports / Dashboard', to: '/reports', text: 'Access generated report', letter:'R', icon:BarChart2},
     { label: 'Users', to: '/users', text: 'Manage users', letter:'U', icon:Users},
     { label: 'Database', to: '/database', text: 'Access and manage database', letter:'U', icon:Database},
   ],
