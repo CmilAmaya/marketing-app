@@ -8,13 +8,10 @@ import Users from './pages/Users';
 import Database from './pages/Database';
 import Help from './pages/Help'
 import Login from './pages/Login';
-import Register from './pages/Register';
 import './App.css';
 
 function App() {
   const { user } = useAuth();
-  const role = user?.role || 'user';
-
   return (
     <>
       <Toaster
@@ -36,16 +33,15 @@ function App() {
       />
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
         <Route
           path="/"
-          element={user ? <Layout role={role} /> : <Navigate to="/login" replace />}
+          element={user ? <Layout /> : <Navigate to="/login" replace />}
         >
           <Route index element={<Welcome />} />
           <Route path="upload" element={<Upload />} />
           <Route path="users" element={<Users />}/>
           <Route path="database" element={<Database />}/>
-          <Route path="help" element={<Help role={role} />}/>
+          <Route path="help" element={<Help />}/>
         </Route>
       </Routes>
     </>
