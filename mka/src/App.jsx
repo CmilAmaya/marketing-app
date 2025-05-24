@@ -1,5 +1,6 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast';
+import { useAuth } from './context/AuthContext';
 import Layout from './components/Layout'
 import Welcome from './pages/Welcome';
 import Upload from './pages/Upload';
@@ -11,7 +12,8 @@ import Register from './pages/Register';
 import './App.css';
 
 function App() {
-  const role = 'admin' 
+  const { user } = useAuth();
+  const role = user?.role || 'user';
 
   return (
     <>
@@ -35,7 +37,10 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/" element={<Layout role={role} />}>
+        <Route
+          path="/"
+          element={user ? <Layout role={role} /> : <Navigate to="/login" replace />}
+        >
           <Route index element={<Welcome />} />
           <Route path="upload" element={<Upload />} />
           <Route path="users" element={<Users />}/>

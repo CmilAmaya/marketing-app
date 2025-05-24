@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 import { Upload, HelpCircle, LogOut, BarChart2, Users, Database, ArrowBigUp } from 'lucide-react'
 import avatar from '../assets/avatar.png'
 import '../styles/sidebar.css'
+import { useAuth } from '../context/AuthContext.jsx';
 
 const itemsByRole = {
   admin: [
@@ -23,6 +24,13 @@ const itemsByRole = {
 function Sidebar({ role }) {
   const items = itemsByRole[role] || []
   const bottomItems = itemsByRole.buttons
+  const { logout } = useAuth();
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    logout();
+    window.location.href = '/login';
+  };
 
   return (
     <aside
@@ -66,6 +74,18 @@ function Sidebar({ role }) {
         <hr style={{ margin: '1rem 0', color: '#ddd' }} />
         {bottomItems.map((item) => {
             const ButtonIcon = item.icon
+            if(item.to === '/logout') {
+              return (
+                <a className="links-sidebar" key={item.to} href="/logout" onClick={handleLogout}>
+                  <ButtonIcon size={18} className="icon-sidebar" />
+                  <p className='items-sidebar'> {item.label} </p>
+                  <p className="letter-sidebar">
+                      <ArrowBigUp size={17} style={{ marginLeft: '4px' }} />
+                      {item.letter} 
+                  </p>
+                </a>
+              )
+            }
             return(
                 <NavLink className="links-sidebar" key={item.to} to={item.to}>
                     <ButtonIcon size={18} className="icon-sidebar" />

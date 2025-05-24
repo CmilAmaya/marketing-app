@@ -1,29 +1,10 @@
 import { UserPlus, PencilLine, Trash} from "lucide-react";
 import { useRef, useState } from "react";
+import { useUsers } from '../hooks/useUsers';
 import '../styles/users.css'
 
 function Users (){
-    const users = [
-        { username: "Carlos Arevalo", role: "admin" },
-        { username: "Ivan Ivanov", role: "user" },
-        { username: "Vladimir Vladimirovich", role: "user" },
-        { username: "Carlos Arevalo", role: "admin" },
-        { username: "Ivan Ivanov", role: "user" },
-        { username: "Vladimir Vladimirovich", role: "user" },
-        { username: "Carlos Arevalo", role: "admin" },
-        { username: "Ivan Ivanov", role: "user" },
-        { username: "Vladimir Vladimirovich", role: "user" },
-        { username: "Carlos Arevalo", role: "admin" },
-        { username: "Ivan Ivanov", role: "user" },
-        { username: "Vladimir Vladimirovich", role: "user" },
-        { username: "Carlos Arevalo", role: "admin" },
-        { username: "Ivan Ivanov", role: "user" },
-        { username: "Vladimir Vladimirovich", role: "user" },
-        { username: "Carlos Arevalo", role: "admin" },
-        { username: "Ivan Ivanov", role: "user" },
-        { username: "Vladimir Vladimirovich", role: "user" },
-    ];
-
+    const { users, loading, error } = useUsers();
     const containerRef = useRef(null);
     const [userModal, setUserModal] = useState(false)
     
@@ -45,17 +26,21 @@ function Users (){
             <div className="manage-users-container">
                 <h2 className="title-users">Manage the users</h2>
                 <div className="users-buttons-group">
-                    <button className="add-user-button" onClick={() => handleModalUser()}>
+                    <button className="add-user-button" onClick={handleModalUser}>
                         <UserPlus size={16} /> Add User
                     </button>
                 </div>
             </div>
             <div className="scrollable-content" onScroll={handleScroll} ref={containerRef}>
-                {users.map((item)=>{
-                    return(
-                        <div className="users-container">
-                            <div className="name-role-container" key={item.username}>
-                                <h4>{item.username}</h4>
+                {loading ? (
+                    <p>Loading...</p>
+                ) : error ? (
+                    <p style={{color: 'red'}}>Error al cargar usuarios</p>
+                ) : (
+                    users.map((item) => (
+                        <div className="users-container" key={item.id || item.username}>
+                            <div className="name-role-container">
+                                <h4>{item.name || item.username}</h4>
                                 <h5>{item.role}</h5>
                             </div>
                             <div className="user-actions">
@@ -64,8 +49,8 @@ function Users (){
                             </div>
                             <hr className="line-users" />
                         </div>
-                    )
-                })}
+                    ))
+                )}
             </div>
                 {userModal && (
                         <div className="user-modal">
