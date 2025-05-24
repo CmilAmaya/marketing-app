@@ -17,14 +17,14 @@ export function useAuthProvider() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
-      if (!res.ok) throw new Error('Credenciales incorrectas');
+      if (!res.ok) throw new Error('Wrong credentials');
       const data = await res.json();
       if (data && data.data) {
         setUser(data.data);
         localStorage.setItem('user', JSON.stringify(data.data));
         localStorage.setItem('token', data.data.token)  ;
       } else {
-        throw new Error('Respuesta inválida del servidor');
+        throw new Error('Invalid response from server');
       }
     } catch (err) {
       setError(err.message);
@@ -36,6 +36,7 @@ export function useAuthProvider() {
   const logout = () => {
     setUser(null);
     localStorage.removeItem('user');
+    localStorage.removeItem('token');
   };
 
   return { user, login, logout, loading, error };

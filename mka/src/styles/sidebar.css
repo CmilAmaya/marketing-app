@@ -1,5 +1,7 @@
 .aside-sidebar {
-  width: 350px;
+  width: 30vw; /* 18% del ancho de la ventana, puedes ajustar el valor */
+  min-width: 30vw; /* ancho mínimo para pantallas pequeñas */
+  max-width: 350px; /* ancho máximo para pantallas grandes */
   display: flex;
   flex-direction: column;
   justify-content: space-between;

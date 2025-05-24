@@ -120,16 +120,53 @@
   background-color: #fff;
   padding: 2rem;
   border-radius: 10px;
-  width: 400px;
+  width: 420px;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+}
+
+.user-modal-content--large {
+  width: 420px;
+  min-width: 420px;
+  max-width: 95vw;
+  padding: 2.5rem;
+  box-sizing: border-box;
+}
+
+.user-modal-content--large .group-modal-input input,
+.user-modal-content--large .group-modal-input select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .user-modal-content h3 {
   text-align: center;
   color: var(--color-primary);
   font-family: var(--font-primary);
+}
+
+.user-modal-content input,
+.user-modal-content select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.select-role {
+  width: 100%;
+  margin-left: 0;
+  height: 42px;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid var(--color-primary);
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: var(--font-primary);
+  background: white;
+  appearance: none;
+  /* Para que el icono de flecha no cambie el alto */
+  box-sizing: border-box;
 }
 
 .user-modal-content input {
@@ -142,19 +179,18 @@
 
 .group-modal-input{
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1rem; 
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem; 
 }
 
-.select-role{
-  padding: 0.5rem 0.5rem;
-  border: 1px solid var(--color-primary);
-  border-radius: 6px;
-  font-size: 1rem;
-  font-family: var(--font-primary);
-  width: 14.8rem;
-  margin-left: auto;
+.input-subtext {
+  display: block;
+  font-size: 0.75em;
+  color: #666;
+  margin-top: 2px;
+  margin-left: 2px;
+  font-style: italic;
 }
 
 .user-modal-actions {

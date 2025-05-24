@@ -5,15 +5,15 @@ import '../styles/sidebar.css'
 import { useAuth } from '../context/AuthContext.jsx';
 
 const itemsByRole = {
-  admin: [
+  Admin: [
     { label: 'Upload File', to: '/upload', text: 'CSV file', letter:'U', icon:Upload},
     { label: 'Reports / Dashboard', to: '/reports', text: 'Access generated report', letter:'R', icon:BarChart2},
     { label: 'Users', to: '/users', text: 'Manage users', letter:'U', icon:Users},
     { label: 'Database', to: '/database', text: 'Access and manage database', letter:'U', icon:Database},
   ],
-  user: [
+  User: [
     { label: 'Upload File', to: '/upload', text: 'CSV file', letter:'U', icon:Upload},
-    { label: 'Reports / Dashboard', to: '/reports', text: 'Acess generated report', letter:'R', icon:BarChart2},
+    { label: 'Reports / Dashboard', to: '/reports', text: 'Access generated report', letter:'R', icon:BarChart2},
   ],
   buttons: [
     { label: 'Help', to: '/help', letter:'H', icon:HelpCircle},
@@ -21,10 +21,12 @@ const itemsByRole = {
   ],
 }
 
-function Sidebar({ role }) {
-  const items = itemsByRole[role] || []
+function Sidebar() {
+  const { user, logout } = useAuth();
+  const role = user?.role || 'User';
+  const items = itemsByRole[role] || [];
   const bottomItems = itemsByRole.buttons
-  const { logout } = useAuth();
+  const username = user?.name || user?.username || user?.email || 'User';
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -40,7 +42,7 @@ function Sidebar({ role }) {
         <div className='title-sidebar'>
           <img src={avatar} width="50px" height="50px"></img>
           <div className='title-name-sidebar'>
-            <h4 className='name-sidebar'>Carlos Arevalo</h4>
+            <h4 className='name-sidebar'>{username}</h4>
             <h5 className='role-sidebar'>{role}</h5>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import pinkFace from '../assets/Imagen1.png'
 import heartFace from '../assets/Imagen2.png'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useState } from 'react';
 import '../styles/login.css'
@@ -33,8 +33,6 @@ function Login(){
                     <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="******" required />
 
                     {error && <p style={{color: 'red'}}>{error}</p>}
-
-                    <Link to="/register" className="login-link">New here? Sign up</Link>
 
                     <button type="submit" disabled={loading}>
                         {loading ? 'Signing in...' : 'Sign In'}
