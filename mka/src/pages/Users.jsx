@@ -10,7 +10,8 @@ function Users (){
     const [editModal, setEditModal] = useState(false);
     const [newUser, setNewUser] = useState({ username: '', role: 'user', password: '' });
     const [editingUser, setEditingUser] = useState(null); // Renombrado para evitar conflicto
-    
+    const [editError, setEditError] = useState('');
+
     const handleScroll = (e) => {
         e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
     }
@@ -43,13 +44,19 @@ function Users (){
 
     const handleUpdateUser = async () => {
         if (!editingUser) return;
+        if (!editingUser.password || editingUser.password.trim() === '') {
+            setEditError('Password is required to update the user.');
+            return;
+        }
+        setEditError('');
         try {
-            await editUser(editingUser.id, {
+            const userData = {
                 name: editingUser.name || editingUser.username,
                 role: editingUser.role.charAt(0).toUpperCase() + editingUser.role.slice(1).toLowerCase(),
-                passwordHash: editingUser.password || undefined, // Solo si se cambia
                 email: editingUser.email || '',
-            });
+                passwordHash: editingUser.password,
+            };
+            await editUser(editingUser.id, userData);
             setEditModal(false);
             setEditingUser(null);
         } catch (err) {
@@ -146,16 +153,17 @@ function Users (){
                         </div>
                         <div className="group-modal-input">
                             <label>Password:</label>
-                            <input type="password" value={editingUser.password || ''} onChange={e => setEditingUser({ ...editingUser, password: e.target.value })} />
-                            <span className="input-subtext"> <em>empty for no changes</em> </span>
+                            <input type="password" value={editingUser.password || ''} onChange={e => setEditingUser({ ...editingUser, password: e.target.value })} required />
+                            <span className="input-subtext"> <em>required for update</em> </span>
                         </div>
+                        {editError && <p style={{ color: 'red', margin: 0 }}>{editError}</p>}
                         <div className="group-modal-input">
                             <label>Email:</label>
                             <input type="email" value={editingUser.email || ''} onChange={e => setEditingUser({ ...editingUser, email: e.target.value })} />
                         </div>
                         <div className="user-modal-actions">
                             <button className="add-user-button" onClick={handleUpdateUser}>Save</button>
-                            <button className="delete-user-button" onClick={() => { setEditModal(false); setEditingUser(null); }}>Cancel</button>
+                            <button className="delete-user-button" onClick={() => { setEditModal(false); setEditingUser(null); setEditError(''); }}>Cancel</button>
                         </div>
                     </div>
                 </div>
