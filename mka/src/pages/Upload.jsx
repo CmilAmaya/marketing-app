@@ -1,35 +1,36 @@
 import { File, Check, X } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useFile } from "../hooks/useFile";
+import { uploadFileApi } from "../api/api";
 import '../styles/upload.css';
 
 function Upload() {
+  const { file, content, loading, error, handleFileChange, reset } = useFile();
   const [fileModal, setFileModal] = useState(false);
-  const [file, setFile] = useState("");
-  const [fileContent, setFileContent] = useState("");
-  const [loading, setLoading] = useState(false);
 
+  // Mostrar modal cuando se carga un archivo
   const handleInputChange = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    setFile(file);
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      setFileContent(event.target.result);
-      setFileModal(true);
-    };
-    reader.readAsText(file);
+    handleFileChange(e);
+    setFileModal(true);
   };
 
-  const processFile = () => {
-    setLoading(true);
-    console.log(fileContent);
+  const processFile = async () => {
+    if (!file) return;
     setFileModal(false);
-    setFileContent("");
-  }
+    try {
+      await uploadFileApi(file);
+      reset();
+      // Aquí podrías mostrar un toast de éxito
+    } catch (err) {
+      alert('Error uploading file');
+      console.log(err);
+    }
+  };
 
   const closeModal = () => {
     setFileModal(false);
-    setFileContent("");
+    reset();
   };
 
   return (
@@ -52,9 +53,10 @@ function Upload() {
             style={{ display: 'none' }}
           />
         </label>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
       </div>
 
-      {fileModal && (
+      {fileModal && file && (
         <div className='file-modal'>
           <div className="modal-content">
               <h2 className="modal-text">Do you want to process the file {file.name}?</h2>

@@ -35,9 +35,7 @@ function Sidebar() {
   };
 
   return (
-    <aside
-      className='aside-sidebar'
-    >
+    <aside className="aside-sidebar">
       <div>
         <div className='title-sidebar'>
           <img src={avatar} width="50px" height="50px"></img>

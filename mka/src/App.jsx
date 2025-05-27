@@ -1,17 +1,20 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import { useAuth } from './context/AuthContext';
-import Layout from './components/Layout'
+import { useAuth } from './context/AuthContext.jsx';
+import Layout from './components/Layout';
 import Welcome from './pages/Welcome';
 import Upload from './pages/Upload';
 import Users from './pages/Users';
 import Database from './pages/Database';
-import Help from './pages/Help'
+import Help from './pages/Help';
 import Login from './pages/Login';
+import Report from './pages/Report';
 import './App.css';
 
 function App() {
   const { user } = useAuth();
+  const location = useLocation();
+
   return (
     <>
       <Toaster
@@ -31,7 +34,7 @@ function App() {
           }
         }}
       />
-      <Routes>
+      <Routes location={location}>
         <Route path="/login" element={<Login />} />
         <Route
           path="/"
@@ -42,10 +45,11 @@ function App() {
           <Route path="users" element={<Users />}/>
           <Route path="database" element={<Database />}/>
           <Route path="help" element={<Help />}/>
+          <Route path="reports" element={<Report />} />
         </Route>
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

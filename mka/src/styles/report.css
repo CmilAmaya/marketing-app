@@ -1,0 +1,120 @@
+/* Estilos para el dashboard de reportes */
+body, #root {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.report-dashboard-scroll {
+  height: 100vh;
+  overflow-y: auto;
+  background: #f5f5fa;
+}
+
+.report-header {
+  max-width: 1000px;
+  margin: 24px auto 1.5rem auto;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 12px #eee;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+.report-header-title {
+  color: #835bfc;
+  margin: 0 0 12px 0;
+  font-weight: 600;
+  font-size: 22px;
+}
+.report-date-range-label {
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+.report-date-inputs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.report-date-inputs input[type="date"] {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 15px;
+  background: #fafbfc;
+  outline: none;
+  width: 140px;
+}
+.report-header-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+  min-width: 120px;
+}
+.report-header-btn {
+  border-radius: 8px;
+  padding: 0;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  width: 160px;
+  height: 44px;
+  box-sizing: border-box;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.report-header-btn.filter {
+  border: 1.5px solid #1c0c4f;
+  background: white;
+  color: #1c0c4f;
+  margin-bottom: 8px;
+}
+.report-header-btn.export {
+  border: none;
+  background: #1c0c4f;
+  color: white;
+  box-shadow: 0 1px 4px #e5e5f7;
+}
+
+.report-main {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 2px 12px #eee;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.report-indicadores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 32px;
+  justify-content: center;
+}
+.report-indicador-card {
+  min-width: 180px;
+  background: #f7f7fa;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 4px #eee;
+}
+.report-indicador-card h4 {
+  color: #835bfc;
+  margin-bottom: 8px;
+}
+
+/* Elimina max-height y overflow de .report-graficos-scroll */
+.report-graficos-scroll {
+  padding-right: 8px;
+}

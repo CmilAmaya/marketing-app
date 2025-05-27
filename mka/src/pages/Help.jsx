@@ -1,9 +1,13 @@
 import { useState } from "react";
 import "../styles/help.css";
+import { useAuth } from '../context/AuthContext.jsx';
 
-function Help({ role }) {
+function Help() {
+  const { user } = useAuth();
+  const role = user?.role || 'User';
+  
   const functions = {
-    admin: [
+    Admin: [
       {
         functionName: "Upload File",
         features: [
@@ -45,7 +49,7 @@ function Help({ role }) {
         ],
       },
     ],
-    user: [
+    User: [
       {
         functionName: "Upload File",
         features: [
@@ -85,7 +89,7 @@ function Help({ role }) {
   return (
     <>
       <div className="manage-help-container">
-          <h2 className="title-help">{role == "admin" ? "Administrator functions" : "User functions"}</h2>
+          <h2 className="title-help">{role == "Admin" ? "Administrator functions" : "User functions"}</h2>
       </div>
       <div className="accordion-container">
         {functionByRole.map((item, index) => (

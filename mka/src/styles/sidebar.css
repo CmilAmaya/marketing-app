@@ -8,6 +8,7 @@
   padding: 0rem 1rem;
   border-right: 2px solid var(--color-border);
   height: 100vh;
+  max-height: 100vh;
   box-sizing: border-box;
   margin-left: 0.5rem;
   
@@ -38,6 +39,13 @@
   padding: 1rem 0.5rem;
   text-decoration: none;
   font-family: var(--font-primary); 
+  transition: background 0.2s, color 0.2s;
+}
+
+.links-sidebar:hover {
+  background-color: #e6e0fa;
+  color: var(--color-primary);
+  border-radius: 15px;
 }
 
 .links-sidebar-buttons{
